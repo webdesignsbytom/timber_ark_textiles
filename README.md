@@ -2,7 +2,7 @@
 
 Presentation and contact website for a sewing design company
 
-Current Address [Live Link](https://main--velvety-blini-fa7e84.netlify.app/)
+Current Address [Live Link](https://main--effervescent-brigadeiros-b4c4d1.netlify.app/)
 
 ## Table of contents
 

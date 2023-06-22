@@ -3,7 +3,9 @@ module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
-      backgroundImage: {},
+      backgroundImage: {
+        'main-bg': "url('../assets/img/backgrounds/newsletter-bg.jpg')",
+      },
       fontFamily: {
         poppins: ['Poppins', 'sans-serif'],
         monts: ['Montserrat', 'sans-serif'],
