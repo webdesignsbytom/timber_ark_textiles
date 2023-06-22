@@ -4,13 +4,24 @@ import { Link, useNavigate } from 'react-router-dom';
 import { UserContext } from '../../context/UserContext';
 import { ToggleContext } from '../../context/ToggleContext';
 
-
 function Navbar() {
   const { user, setUser } = useContext(UserContext);
-  const { toggleNavbarOpenClosed, toggleNavigation, activeNav, setActiveNav } =
-    useContext(ToggleContext);
+  const {
+    toggleNavbarOpenClosed,
+    toggleNavigation,
+    activeNav,
+    setActiveNav,
+    setToggleNavigation,
+  } = useContext(ToggleContext);
 
   let navigate = useNavigate();
+
+  const navigateToPage = (event) => {
+    const { id } = event.target;
+    setActiveNav(id);
+    setToggleNavigation(false);
+    navigate(`${id}`);
+  };
 
   const logoutUser = (event) => {
     event.preventDefault();
@@ -134,52 +145,38 @@ function Navbar() {
             <div className='bg-white nav__bg p-1 rounded'>
               <ul className='text-center grid h-fit w-full text-xl'>
                 <li
+                  id='/'
+                  onClick={navigateToPage}
                   className={
                     activeNav === '/'
                       ? 'w-full no__highlights nav__bg hover:bg-green-500 active:scale-95 grid py-2 outline-2 outline outline-[#bfb89d] bg-[#c1beb4] text-gray-800 font-semibold'
                       : 'w-full no__highlights nav__bg hover:bg-blue-500 active:scale-95 grid py-2 outline-2 outline outline-[#bfb89d] bg-[#f0efeb] text-gray-800 font-semibold'
                   }
                 >
-                  <Link className='w-full' to='/'>
-                    Home
-                  </Link>
+                  Home
                 </li>
                 <li
+                  id='/gallery'
+                  onClick={navigateToPage}
                   className={
                     activeNav === '/gallery'
                       ? 'w-full no__highlights nav__bg hover:bg-green-500 active:scale-95 grid py-2 outline-2 outline outline-[#bfb89d] bg-[#c1beb4] text-gray-800 font-semibold'
                       : 'w-full no__highlights nav__bg hover:bg-blue-500 active:scale-95 grid py-2 outline-2 outline outline-[#bfb89d] bg-[#f0efeb] text-gray-800 font-semibold'
                   }
                 >
-                  <Link className='w-full' to='/gallery'>
-                    Gallery
-                  </Link>
+                  Gallery
                 </li>
                 <li
+                  id='/contact'
+                  onClick={navigateToPage}
                   className={
                     activeNav === '/contact'
                       ? 'w-full no__highlights nav__bg hover:bg-green-500 active:scale-95 grid py-2 outline-2 outline outline-[#bfb89d] bg-[#c1beb4] text-gray-800 font-semibold'
                       : 'w-full no__highlights nav__bg hover:bg-blue-500 active:scale-95 grid py-2 outline-2 outline outline-[#bfb89d] bg-[#f0efeb] text-gray-800 font-semibold'
                   }
                 >
-                  <Link className='w-full' to='/contact'>
-                    Contact
-                  </Link>
+                  Contact
                 </li>
-
-                {!user.email && (
-                  <li
-                    className={
-                      activeNav === '/login'
-                        ? 'w-full no__highlights nav__bg hover:bg-green-500 active:scale-95 grid py-2 outline-2 outline outline-[#bfb89d] bg-[#c1beb4] text-gray-800 font-semibold'
-                        : 'w-full no__highlights nav__bg hover:bg-blue-500 active:scale-95 grid py-2 outline-2 outline outline-[#bfb89d] bg-[#f0efeb] text-gray-800 font-semibold'
-                    }
-                  >
-                    <Link className='w-full' to='/Login'>
-                      Login
-                    </Link>
-                  </li>
-                )}
                 {(user.role === 'ADMIN' || user.role === 'DEVELOPER') && (
                   <li
                     className={
@@ -193,6 +190,13 @@ function Navbar() {
                     </Link>
                   </li>
                 )}
+                <li>
+                  {user.email && (
+                    <button className='' onClick={logoutUser}>
+                      Logout
+                    </button>
+                  )}
+                </li>
               </ul>
             </div>
           </nav>

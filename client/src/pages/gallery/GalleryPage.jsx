@@ -19,7 +19,7 @@ function GalleryPage() {
         <main className='grid w-full h-full mt-4'>
           <div className='grid w-full mx-auto px-2 lg:px-8 grid-rows-reg h-full pb-24'>
             <section className='mt-4 grid container lg:w-1/2 mx-auto'>
-              <article className='text-center border-b-2 border-solid border-black pb-6'>
+              <article className='text-center px-4 border-b-2 border-solid border-black pb-6'>
                 <div>
                   <h2 className='text-xl font-corgs'>Welcome To The Gallery</h2>
                 </div>
@@ -35,8 +35,8 @@ function GalleryPage() {
               </article>
             </section>
             {/* GALLERY */}
-            <section className='mt-12 px-12 '>
-              <div className='grid grid-cols-3 text-center gap-y-24'>
+            <section className='mt-16 px-12'>
+              <div className='grid lg:grid-cols-3 text-center gap-y-24'>
                 {galleryItems?.map((item, index) => {
                   return (
                     <div key={index} className='w-fit mx-auto px-4 py-8 grid justify-center shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]'>

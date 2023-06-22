@@ -19,6 +19,7 @@ const ToggleContextProvider = ({ children }) => {
         toggleNavbarOpenClosed,
         activeNav,
         setActiveNav,
+        setToggleNavigation
       }}
     >
       {children}

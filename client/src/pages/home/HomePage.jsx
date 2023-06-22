@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 // Components
 import Navbar from '../../components/nav/Navbar';
@@ -6,13 +6,16 @@ import Navbar from '../../components/nav/Navbar';
 import { ToggleContext } from '../../context/ToggleContext';
 
 function HomePage() {
-  const { toggleNavbar, setActiveNav } = useContext(ToggleContext);
+  const { setActiveNav } = useContext(ToggleContext);
 
   let navigate = useNavigate();
 
+  useEffect(() => {
+    setActiveNav('/');
+  }, []);
+
   const navigateToPage = (event) => {
     const { id } = event.target;
-    console.log('ssddd', id);
     setActiveNav(id);
     navigate(`${id}`);
   };
@@ -25,10 +28,10 @@ function HomePage() {
           <div className='grid container w-full lg:w-1/2 mx-auto overflow-hidden px-2 lg:px-8 grid-rows-reg h-full pb-24'>
             <div className='grid grid-rows-2 h-full overflow-hidden bg-white rounded-xl'>
               <section className='grid w-full overflow-hidden h-2/3'>
-                <div class='bg-white w-full h-full grid p-4'>
+                <div className='bg-white w-full h-full grid p-4'>
                   <img
                     src='https://imagedelivery.net/0ObHXyjKhN5YJrtuYFSvjQ/i-91e9d5e3-5dd7-43a8-8085-304071862f63/banner'
-                    class='object-cover w-full object-top'
+                    className='object-cover w-full object-top'
                     alt='im'
                   />
                 </div>
@@ -64,20 +67,20 @@ function HomePage() {
                       onClick={navigateToPage}
                       className='w-full outline outline-2 outline-black rounded py-1 bg-[#f6f6f4] hover:bg-[#f0efeb] no__highlights active:scale-95'
                     >
-                      <span>Contact</span>
+                      Contact
                     </button>
                     <a
                       href='https://folksy.com/shops/NicHarman'
                       className='w-full text-center outline outline-2 outline-black rounded py-1 bg-[#f6f6f4] hover:bg-[#f0efeb] no__highlights active:scale-95'
                     >
-                      <span>Go To Store</span>
+                      Go To Store
                     </a>
                     <button
                       id='/gallery'
                       onClick={navigateToPage}
                       className='w-full outline outline-2 outline-black rounded py-1 bg-[#f6f6f4] hover:bg-[#f0efeb] no__highlights active:scale-95'
                     >
-                      <span>Gallery</span>
+                      Gallery
                     </button>
                   </div>
                 </section>
